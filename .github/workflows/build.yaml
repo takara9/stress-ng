@@ -24,8 +24,7 @@ jobs:
 
       - name: Check Dockerfile 
         run: |
-          docker run --rm -i hadolint/hadolint < Dockerfile
-
+          docker run --rm -i -v `pwd`/hadolint.yaml:/.hadolint.yaml hadolint/hadolint < Dockerfile
       - name: Build a image
         id: push
         uses: docker/build-push-action@v5
